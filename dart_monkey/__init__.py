@@ -4,7 +4,9 @@ import requests
 import time
 import json
 import os
+from .MonkeySee import MonkeySee
 from .options import options
+
 
 # Set the ticker
 #ticker = input('input ticker symbol: ')
