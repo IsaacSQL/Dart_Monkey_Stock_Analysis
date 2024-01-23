@@ -3,6 +3,7 @@ import bs4 as bs
 import requests
 import time
 import json
+import os
 
 # Set the ticker
 #ticker = input('input ticker symbol: ')
@@ -55,7 +56,7 @@ def MonkeySee(ticker):
     }
 
     # Writing to sample.json
-    with open(f'{ticker}.json', 'w') as f:
+    with open(f'output/{ticker}.json', 'w') as f:
         json.dump(data, f)
     print(f'Finished Scraping {ticker} Data')
 
@@ -80,6 +81,9 @@ print(""" Dart_Monkey 2024
       """)
 time.sleep(0.5)
 print("Beginning Data Scrape")
+# Create the output directory if it doesn't exist
+if not os.path.exists('output'):
+    os.makedirs('output')
 tickers = []    
 tickers = TickerGrabber()
 for ticker in tickers:
