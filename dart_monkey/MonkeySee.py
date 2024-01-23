@@ -1,14 +1,13 @@
 import yfinance as yahooFinance
-import bs4 as bs
-import requests
 import time
 import json
-import os
 class MonkeySee:
+  def __init__(self, ticker):
+      self.ticker = ticker
   # Set the ticker
   #ticker = input('input ticker symbol: ')
-  def GetInformation(ticker):
-      information = yahooFinance.Ticker(ticker)
+  def GetInformation(self):
+      information = yahooFinance.Ticker(self.ticker)
       def Scraper(kpi, retry=0):
           try:
               result = information.info[kpi]
@@ -22,8 +21,8 @@ class MonkeySee:
           return result
       return Scraper
   
-  def MonkeySee(ticker):
-      Scraper = GetInformation(ticker)
+  def toJSON(self):
+      Scraper = self.GetInformation()
       #assign KPIs
       Sector = Scraper('sector')
       PriceEarningsRatio = float(Scraper('trailingPE'))
@@ -40,7 +39,7 @@ class MonkeySee:
   
       # Data to be written
       data = {
-          "name": ticker,
+          "name": self.ticker,
           "Sector": Sector,
           "PriceToEarningsRatio": PriceEarningsRatio,
           "PriceToEarningsGrowth": PriceEarningsGrowth,
@@ -56,19 +55,7 @@ class MonkeySee:
       }
   
       # Writing to sample.json
-      with open(f'output/{ticker}.json', 'w') as f:
+      with open(f'output/{self.ticker}.json', 'w') as f:
           json.dump(data, f)
-      print(f'Finished Scraping {ticker} Data')
+      print(f'Finished Scraping {self.ticker} Data')
   
-  def TickerGrabber():
-      resp = requests.get('https://en.wikipedia.org/wiki/Russell_1000_Index')
-      soup = bs.BeautifulSoup(resp.text, 'lxml')
-      table = soup.find('table', {'class': 'wikitable sortable'})
-  
-      ticker = []
-      tickers = []
-      for row in table.findAll('tr')[1:]:
-          ticker = row.findAll('td')[1].text
-          tickers.append(ticker)
-      tickers = [s.replace('\n', '') for s in tickers]
-      return tickers
