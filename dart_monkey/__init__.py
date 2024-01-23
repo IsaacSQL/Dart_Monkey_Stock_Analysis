@@ -24,7 +24,7 @@ def main():
        _ \'-_,#
       _\'--','`|
       \`---`  /
-       `----'`
+jgs    `----'`
         """)
     time.sleep(0.5)
     print("Beginning Data Scrape")
