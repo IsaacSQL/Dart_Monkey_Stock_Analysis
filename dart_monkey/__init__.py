@@ -4,6 +4,7 @@ import requests
 import time
 import json
 import os
+from .options import options
 
 # Set the ticker
 #ticker = input('input ticker symbol: ')
@@ -84,6 +85,7 @@ print("Beginning Data Scrape")
 # Create the output directory if it doesn't exist
 if not os.path.exists('output'):
     os.makedirs('output')
+args = options() # Args contains command line arguments
 tickers = []    
 tickers = TickerGrabber()
 for ticker in tickers:
