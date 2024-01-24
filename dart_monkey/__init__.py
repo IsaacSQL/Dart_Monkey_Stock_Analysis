@@ -14,7 +14,7 @@ def TickerGrabber(stockindex, num):
 
     ticker = []
     tickers = []
-    for row in table.findAll('tr')[num:]:
+    for row in table.findAll('tr')[1:]:
         ticker = row.findAll('td')[num].text
         tickers.append(ticker)
     tickers = [s.replace('\n', '') for s in tickers]
@@ -22,7 +22,7 @@ def TickerGrabber(stockindex, num):
 def scrape(args):
     stockindex, num = '', 0
     if args.index == 'sp500':
-        stockindex, num = 'https://en.wikipedia.org/wiki/S%26P_100', 0
+        stockindex, num = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies', 0
     elif args.index == 'russell1000':
         stockindex, num = 'https://en.wikipedia.org/wiki/Russell_1000_Index', 1
     else:
