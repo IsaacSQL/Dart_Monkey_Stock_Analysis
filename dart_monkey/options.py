@@ -16,4 +16,10 @@ def options():
         help='sp500 or russell1000',
         type=str
     )
+
+    parser.add_argument(
+        '--noscrape',
+        help='Disable scraping',
+        action='store_false'
+    )
     return parser.parse_args()
