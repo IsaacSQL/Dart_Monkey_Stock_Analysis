@@ -1,8 +1,8 @@
 # Description
 Dart Monkey 2024.
 This is a project related to ongoing financial data analysis and data scraping I am experimenting with.
-The initial project is very simple to use but has limited options for data scraping and can be a little cluttered in its output.
-When run, the project will pull KPIs from the stocks on the Russel 1,000 Index. These will be output into separate JSON files named {Ticker}.json.
+When run, the project will pull KPIs from the stocks on the Russel 1,000 or S&P500 Index. These will be output into separate JSON files.
+A basic form of analysis is now run on the scraped data. The final output is a top, bottom, and random stock. The data is exported to a CSV for easy review.
 
 Format is `py -m dart_monkey INDEX`. Index should be `sp500` for the S&P 500 or `russell1000` for Russell 1,000 index
 # Options
