@@ -3,7 +3,6 @@ import os
 import requests
 import time
 import pandas as pd
-import numpy as np
 import json
 from .MonkeySee import MonkeySee
 from .options import options
